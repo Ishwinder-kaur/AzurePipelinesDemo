@@ -1,7 +1,7 @@
 #Install-Module MSOnline -Force
 #Install-Module AzureRm -Force
 #Install-Module -Name Az -AllowClobber -Force
-Import-Module Az
+
 Set-Location $PSScriptRoot
 Get-Location
 
@@ -27,7 +27,7 @@ Clear-AzContext -Scope CurrentUser -Force
 $SECURE_PASSWORD = ConvertTo-SecureString $adpassword -AsPlainText -Force
 $CREDENTIAL = New-Object System.Management.Automation.PSCredential ($aduser, $SECURE_PASSWORD)
 Write-Host "Prompting for username and password"
-Connect-AzAccount
+Login-AzAccount
 
 If ($error) {
     Throw "Deployment failed. Check the credentials."
