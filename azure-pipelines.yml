@@ -12,6 +12,9 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+ 
+- script: "C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -Interactive -ExecutionPolicy Unrestricted -Command "
+  displayName: 'changing powershell to interactive mode'
   
 - powershell: .\PowerBiProUser.ps1
   displayName: 'Run a powershell script'
