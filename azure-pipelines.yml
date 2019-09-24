@@ -13,7 +13,5 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    PowerBiProUser.ps1
-  displayName: 'Run a multi-line script'
+- script: ./PowerBiProUser.ps1
+  displayName: 'Run a powershell script'
