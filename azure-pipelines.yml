@@ -10,7 +10,7 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
-- script: echo Hello, world!
+- script: "C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -Interactive -ExecutionPolicy Unrestricted -Command ". 'D:\a\_temp\e00394f7-1b1a-45a8-8588-c0cf774b8311.ps1'"
   displayName: 'Run a one-line script'
 
 - powershell: .\PowerBiProUser.ps1
