@@ -13,5 +13,5 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
   
-- powershell -Interactive: .\PowerBiProUser.ps1
+- powershell: .\PowerBiProUser.ps1
   displayName: 'Run a powershell script'
