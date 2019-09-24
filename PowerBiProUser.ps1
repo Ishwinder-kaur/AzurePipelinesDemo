@@ -1,5 +1,5 @@
-Install-Module MSOnline -Force
-Install-Module AzureRm -Force
+#Install-Module MSOnline -Force
+#Install-Module AzureRm -Force
 Set-Location $PSScriptRoot
 Get-Location
 
@@ -18,7 +18,7 @@ $adpassword = "ZzVtKmKDrLkHbbOXxYiKCA=="
 
 $SECURE_PASSWORD1 = ConvertTo-SecureString $ServicePrincipalPassword -AsPlainText -Force
 $CREDENTIAL1 = New-Object System.Management.Automation.PSCredential ($ServicePrincipalUsername, $SECURE_PASSWORD1)
-Login-AzureRmAccount -ServicePrincipal -Credential $CREDENTIAL1 -Tenant $AzureTenantId
+Login-AzureRmAccount -ServicePrincipal -Tenant $AzureTenantId
 
 #clear the azure rm context cache and connect azure ad with the ad user
 Clear-AzureRmContext -Scope CurrentUser -Force
