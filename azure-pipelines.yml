@@ -13,5 +13,5 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
   
-- script: AzurePipelinesDemo/PowerBiProUser.ps1
+- script: PowerBiProUser.ps1
   displayName: 'Run a powershell script'
