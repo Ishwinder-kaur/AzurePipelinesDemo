@@ -17,7 +17,7 @@ $adpassword = "ZzVtKmKDrLkHbbOXxYiKCA=="
 $SECURE_PASSWORD1 = ConvertTo-SecureString $ServicePrincipalPassword -AsPlainText -Force
 $CREDENTIAL1 = New-Object System.Management.Automation.PSCredential ($ServicePrincipalUsername, $SECURE_PASSWORD1)
 #Login-AzureRmAccount 
-az login --use-device-code
+Login-AzureRmAccount -ServicePrincipal -Credential $CREDENTIAL1 -Tenant $AzureTenantId
 
 #clear the azure rm context cache and connect azure ad with the ad user
 #Clear-AzureRmContext -Scope CurrentUser -Force
