@@ -1,6 +1,7 @@
 #Install-Module MSOnline -Force
 #Install-Module AzureRm -Force
-Install-Module -Name Az -AllowClobber -Force
+#Install-Module -Name Az -AllowClobber -Force
+Import-Module Az.Accounts
 Set-Location $PSScriptRoot
 Get-Location
 
@@ -19,10 +20,10 @@ $adpassword = "ZzVtKmKDrLkHbbOXxYiKCA=="
 
 $SECURE_PASSWORD1 = ConvertTo-SecureString $ServicePrincipalPassword -AsPlainText -Force
 $CREDENTIAL1 = New-Object System.Management.Automation.PSCredential ($ServicePrincipalUsername, $SECURE_PASSWORD1)
-Login-AzureRmAccount -ServicePrincipal -Credential $CREDENTIAL1 -Tenant $AzureTenantId
+Login-AzAccount -ServicePrincipal -Credential $CREDENTIAL1 -Tenant $AzureTenantId
 
 #clear the azure rm context cache and connect azure ad with the ad user
-#Clear-AzContext -Scope CurrentUser -Force
+Clear-AzContext -Scope CurrentUser -Force
 $SECURE_PASSWORD = ConvertTo-SecureString $adpassword -AsPlainText -Force
 $CREDENTIAL = New-Object System.Management.Automation.PSCredential ($aduser, $SECURE_PASSWORD)
 Write-Host "Prompting for username and password"
@@ -32,7 +33,7 @@ If ($error) {
     Throw "Deployment failed. Check the credentials."
 }
 
-if (!(Get-AzureADUser -Filter "userPrincipalName eq '$($powerbiProUserAccount)'" -ErrorAction SilentlyContinue)) {
+if (!(Get-AzADUser -Filter "userPrincipalName eq '$($powerbiProUserAccount)'" -ErrorAction SilentlyContinue)) {
     # create new azure AD user
     $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
     $PasswordProfile.Password = $PowerBIAccountPassword
@@ -46,9 +47,9 @@ else {
     Write-Host "PowerBI Pro User already exists, therefore skipping the stage. "
 }
 
-if (Get-AzureADUser -Filter "userPrincipalName eq '$($powerbiProUserAccount)'" -ErrorAction SilentlyContinue) {
+if (Get-AzADUser -Filter "userPrincipalName eq '$($powerbiProUserAccount)'" -ErrorAction SilentlyContinue) {
    
-    Get-AzureADUser -ObjectId $powerbiProUserAccount | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
+    Get-AzADUser -ObjectId $powerbiProUserAccount | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
     # Fetch user to assign to role
     $roleMember = Get-AzureADUser -ObjectId $powerbiProUserAccount
     # Fetch User Account Administrator role instance
