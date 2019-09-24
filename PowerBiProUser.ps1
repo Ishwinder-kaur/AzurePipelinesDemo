@@ -27,6 +27,8 @@ $SECURE_PASSWORD = ConvertTo-SecureString $adpassword -AsPlainText -Force
 $CREDENTIAL = New-Object System.Management.Automation.PSCredential ($aduser, $SECURE_PASSWORD)
 az login --use-device-code
 
+Connect-AzureAD
+
 If ($error) {
     Throw "Deployment failed. Check the credentials."
 }
