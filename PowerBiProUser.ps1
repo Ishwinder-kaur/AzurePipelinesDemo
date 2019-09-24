@@ -25,7 +25,7 @@ $CREDENTIAL1 = New-Object System.Management.Automation.PSCredential ($ServicePri
 Login-AzureRmAccount -ServicePrincipal -Credential $CREDENTIAL1 -Tenant $AzureTenantId
 
 #clear the azure rm context cache and connect azure ad with the ad user
-Clear-AzContext -Scope CurrentUser -Force
+Clear-AzureRmContext -Scope CurrentUser -Force
 $SECURE_PASSWORD = ConvertTo-SecureString $adpassword -AsPlainText -Force
 $CREDENTIAL = New-Object System.Management.Automation.PSCredential ($aduser, $SECURE_PASSWORD)
 Connect-AzureAD -Credential $CREDENTIAL
