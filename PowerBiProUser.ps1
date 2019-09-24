@@ -1,10 +1,4 @@
-param(
-         [Parameter(Mandatory)]
-         [string]$aduser,
-         [Parameter(Mandatory)]
-         [string]$adpassword
-         
-     )
+
 Install-Module AzureAD -Force
 
 #$kubsecrets = '..\scripts\get-az-secret.bat'
@@ -31,7 +25,7 @@ $SECURE_PASSWORD = ConvertTo-SecureString $adpassword -AsPlainText -Force
 $CREDENTIAL = New-Object System.Management.Automation.PSCredential ($aduser, $SECURE_PASSWORD)
 az login --use-device-code
 
-Connect-AzureAD -Credential $CREDENTIAL
+Connect-AzureAD -Confirm -Force
 
 If ($error) {
     Throw "Deployment failed. Check the credentials."
