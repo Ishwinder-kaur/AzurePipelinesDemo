@@ -2,7 +2,7 @@
 #Install-Module AzureRm -Force -AllowClobber
 #Install-Module -Name Az -AllowClobber -Force
 
-Import-Module -Name Az.Accounts -Force
+Import-Module -Name Az -Force
 
 Set-Location $PSScriptRoot
 Get-Location
