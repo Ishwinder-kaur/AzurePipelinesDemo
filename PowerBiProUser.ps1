@@ -1,14 +1,10 @@
-#Install-Module MSOnline -Force
-#Install-Module AzureRm -Force -AllowClobber
-#Install-Module -Name Az -AllowClobber -Force
-
 Set-Location $PSScriptRoot
 Get-Location
 
 #$kubsecrets = '..\scripts\get-az-secret.bat'
 #$data = & $kubsecrets environment
 #$jsonData = ConvertFrom-Json $data -ErrorAction SilentlyContinue
-
+Write-Host "Reading project variables"
 $ServicePrincipalUsername = "3fc05167-d471-471f-ab13-b2e464190cfa"
 $ServicePrincipalPassword = "d9oh6Wa9TAfVYloAbLn517WNw5FCA4+MgtjFV27IB+g="
 $AzureTenantId = "774a1f21-ee4c-476c-8ed2-07c8e8c2e898"
