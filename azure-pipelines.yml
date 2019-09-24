@@ -12,9 +12,6 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
- 
-- script: powershell.exe -Interactive
-  displayName: 'changing powershell to interactive mode'
-  
+
 - powershell: .\PowerBiProUser.ps1
   displayName: 'Run a powershell script'
