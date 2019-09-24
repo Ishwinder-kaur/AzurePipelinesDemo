@@ -2,7 +2,13 @@ Set-Location $PSScriptRoot
 Get-Location
 
 Install-Module AzureAD -Force
-
+param(
+         [Parameter(Mandatory)]
+         [string]$aduser,
+         [Parameter(Mandatory)]
+         [string]$adpassword
+         
+     )
 #$kubsecrets = '..\scripts\get-az-secret.bat'
 #$data = & $kubsecrets environment
 #$jsonData = ConvertFrom-Json $data -ErrorAction SilentlyContinue
@@ -12,8 +18,8 @@ $ServicePrincipalPassword = "d9oh6Wa9TAfVYloAbLn517WNw5FCA4+MgtjFV27IB+g="
 $AzureTenantId = "774a1f21-ee4c-476c-8ed2-07c8e8c2e898"
 $powerbiProUserAccount = "00UIAD1PBIPRO@powerschool.cloud"
 $PowerBIAccountPassword = "PS_Insights@125"
-$aduser = "uiadvaadadmin@powerschool.cloud"
-$adpassword = "ZzVtKmKDrLkHbbOXxYiKCA=="
+#$aduser = "uiadvaadadmin@powerschool.cloud"
+#$adpassword = "ZzVtKmKDrLkHbbOXxYiKCA=="
 
 
 $SECURE_PASSWORD1 = ConvertTo-SecureString $ServicePrincipalPassword -AsPlainText -Force
@@ -27,7 +33,7 @@ $SECURE_PASSWORD = ConvertTo-SecureString $adpassword -AsPlainText -Force
 $CREDENTIAL = New-Object System.Management.Automation.PSCredential ($aduser, $SECURE_PASSWORD)
 az login --use-device-code
 
-Connect-AzureAD -Confirm
+Connect-AzureAD -Credential $CREDENTIAL
 
 If ($error) {
     Throw "Deployment failed. Check the credentials."
