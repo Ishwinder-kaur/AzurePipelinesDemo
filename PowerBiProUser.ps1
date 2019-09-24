@@ -1,8 +1,8 @@
 Set-Location $PSScriptRoot
 Get-Location
 
-Install-Module AzureAD -Force
-PowerShell -Interactive
+#Install-Module AzureAD -Force
+
 #$kubsecrets = '..\scripts\get-az-secret.bat'
 #$data = & $kubsecrets environment
 #$jsonData = ConvertFrom-Json $data -ErrorAction SilentlyContinue
