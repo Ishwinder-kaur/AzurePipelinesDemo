@@ -1,6 +1,8 @@
 #Install-Module MSOnline -Force
-Install-Module AzureRm -Force -AllowClobber
+#Install-Module AzureRm -Force -AllowClobber
 #Install-Module -Name Az -AllowClobber -Force
+
+Import-Module -Name Az.Accounts -Force
 
 Set-Location $PSScriptRoot
 Get-Location
