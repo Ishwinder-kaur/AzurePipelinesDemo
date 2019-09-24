@@ -1,6 +1,6 @@
 #Install-Module MSOnline -Force
 #Install-Module AzureRm -Force
-Install-Module -Name Az -AllowClobber
+Install-Module -Name Az -AllowClobber -Force
 Set-Location $PSScriptRoot
 Get-Location
 
