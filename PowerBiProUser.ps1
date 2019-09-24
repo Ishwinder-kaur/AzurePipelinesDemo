@@ -1,7 +1,6 @@
 Set-Location $PSScriptRoot
 Get-Location
 
-Install-Module AzureRm -Force
 Install-Module AzureAD -Force
 
 #$kubsecrets = '..\scripts\get-az-secret.bat'
