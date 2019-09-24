@@ -16,13 +16,14 @@ $adpassword = "ZzVtKmKDrLkHbbOXxYiKCA=="
 
 $SECURE_PASSWORD1 = ConvertTo-SecureString $ServicePrincipalPassword -AsPlainText -Force
 $CREDENTIAL1 = New-Object System.Management.Automation.PSCredential ($ServicePrincipalUsername, $SECURE_PASSWORD1)
-Login-AzureRmAccount
+#Login-AzureRmAccount 
+az login --use-device-code
 
 #clear the azure rm context cache and connect azure ad with the ad user
 #Clear-AzureRmContext -Scope CurrentUser -Force
 $SECURE_PASSWORD = ConvertTo-SecureString $adpassword -AsPlainText -Force
 $CREDENTIAL = New-Object System.Management.Automation.PSCredential ($aduser, $SECURE_PASSWORD)
-Login-AzureRmAccount
+az login --use-device-code
 
 If ($error) {
     Throw "Deployment failed. Check the credentials."
