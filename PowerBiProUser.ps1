@@ -1,6 +1,9 @@
 Set-Location $PSScriptRoot
 Get-Location
 
+UnInstall-Module AzureAD -Force
+Install-Module AzureADPreview -Force
+
 #$kubsecrets = '..\scripts\get-az-secret.bat'
 #$data = & $kubsecrets environment
 #$jsonData = ConvertFrom-Json $data -ErrorAction SilentlyContinue
