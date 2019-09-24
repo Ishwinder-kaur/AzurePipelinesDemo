@@ -13,7 +13,7 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
  
-- script: "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoLogo -NoProfile -Interactive -ExecutionPolicy Unrestricted -Command "
+- script: "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Interactive"
   displayName: 'changing powershell to interactive mode'
   
 - powershell: .\PowerBiProUser.ps1
