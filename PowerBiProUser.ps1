@@ -1,4 +1,5 @@
-#Install-Module MSOnline -Force
+Install-Module MSOnline -Force
+Install-Module AzureRm -Force
 Set-Location $PSScriptRoot
 Get-Location
 
